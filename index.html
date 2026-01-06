@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Narelle Dobie Designs</title>
+  <title>Narelle Dobie Design</title>
   <meta name="description" content="Narelle Dobie Designs – architectural design services, recent projects, and contact information." />
 
   <style>
     :root{
-      --bg: #0f1416;              /* page base colour */
-      --ink: #eef2f3;             /* main text colour */
-      --muted: #b8c2c6;           /* secondary text */
-      --accent: #b48a57;          /* subtle premium accent */
-      --panel: rgba(10, 14, 16, .55); /* transparent panel */
-      --line: rgba(255,255,255,.12);
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1100px;
-    }
+  /* Base surfaces */
+  --bg: #f6f8f7;                 /* almost-white, slightly warm */
+  --panel: rgba(255, 255, 255, .78); /* frosted white panel */
+
+  /* Text */
+  --ink: #2f3433;                /* charcoal, not pure black */
+  --muted: #6f7a77;              /* soft grey-green */
+
+  /* Accent */
+  --accent: #8faea4;             /* pale sage / eucalyptus green */
+
+  /* Lines & depth */
+  --line: rgba(47, 52, 51, .12); /* subtle grey line */
+  --shadow: 0 16px 40px rgba(0,0,0,.12);
+
+  /* Layout */
+  --radius: 18px;
+  --max: 1100px;
+}
+
 
     * { box-sizing: border-box; }
     html, body { height: 100%; }
@@ -30,15 +40,16 @@
     }
 
     /* Background image layer */
-    .bg{
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(15,20,22,.85), rgba(15,20,22,.65)),
-        url("assets/hero.jpg") center/cover no-repeat;
-      opacity: 0.95; /* overall image visibility */
-      z-index: -1;
-    }
+   .bg{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(246,248,247,.92),
+      rgba(246,248,247,.78)
+    ),
+    url("assets/hero.jpg") center/cover no-repeat;
+}
+
 
     /* Page wrapper */
     .wrap{
