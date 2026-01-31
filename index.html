@@ -86,18 +86,13 @@
 
     /* Placeholder banner strip (swap for your image later) */
     .banner{
-  height: 260px; /* desktop height */
-  background-image: url("assets/images/banner.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-@media (max-width: 900px){
-  .banner{
-    height: 180px;
-  }
-}
-
+      height: 170px;
+      border-top: 1px solid var(--line);
+      background:
+        radial-gradient(600px 200px at 20% 30%, rgba(180,138,87,.25), transparent 55%),
+        radial-gradient(700px 220px at 80% 20%, rgba(255,255,255,.10), transparent 60%),
+        rgba(0,0,0,.14);
+    }
 
     /* Nav */
     nav{
