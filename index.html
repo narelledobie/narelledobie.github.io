@@ -85,16 +85,18 @@
     }
 
     /* Placeholder banner strip (swap for your image later) */
-    .banner{
-  height: 260px; /* desktop height */
+.banner{
+  min-height: 260px;
+  aspect-ratio: 4961 / 3135;
   background-image: url("images/banner2.jpg");
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: center top;
   background-repeat: no-repeat;
+  background-color: rgba(246,248,247,.72);
 }
 @media (max-width: 900px){
   .banner{
-    height: 180px;
+    min-height: 180px;
   }
 }
 
@@ -310,7 +312,7 @@
         padding: 6px 10px 2px;
       }
       .banner{
-        height: 140px;
+        min-height: 140px;
       }
     }
   </style>
