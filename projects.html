@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recent Projects | NARELLE DOBIE DESIGN</title>
+  <meta
+    name="description"
+    content="Recent projects from Narelle Dobie Design. Click a project image to open its PDF."
+  />
+  <style>
+    :root{
+      --bg: #f6f8f7;
+      --panel: rgba(255, 255, 255, .82);
+      --ink: #2f3433;
+      --muted: #6f7a77;
+      --accent: #8faea4;
+      --line: rgba(47, 52, 51, .12);
+      --shadow: 0 16px 40px rgba(0,0,0,.12);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(246,248,247,.94), rgba(246,248,247,.86)),
+        url("assets/hero.jpg") center/cover no-repeat,
+        var(--bg);
+      line-height: 1.5;
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 16px 70px;
+    }
+
+    .hero,
+    .panel{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero{
+      background: rgba(0,0,0,.18);
+      margin-bottom: 16px;
+    }
+
+    .hero-copy{
+      padding: 18px;
+    }
+
+    .hero-copy h1{
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    .hero-copy p{
+      margin: 0;
+      color: var(--muted);
+      max-width: 52rem;
+    }
+
+    .hero-nav{
+      padding: 0 18px 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-nav a{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.16);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .hero-nav a:hover{
+      background: rgba(255,255,255,.24);
+    }
+
+    .panel{
+      background: var(--panel);
+      padding: 18px;
+    }
+
+    .intro{
+      margin-bottom: 18px;
+    }
+
+    .intro h2{
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+    }
+
+    .intro p{
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .project-grid{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card{
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,.72);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+
+    .project-card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(47, 52, 51, .24);
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+    }
+
+    .project-card img{
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: rgba(143,174,164,.18);
+    }
+
+    .project-copy{
+      padding: 14px;
+    }
+
+    .project-copy h3{
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .project-copy p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .project-copy span{
+      display: inline-block;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: .92rem;
+    }
+
+    .note{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 800px){
+      .project-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-copy">
+        <h1>Recent Projects</h1>
+        <p>Click any project image to open its PDF in a new tab. Replace the sample images and PDF file paths with your real project material.</p>
+      </div>
+      <nav class="hero-nav" aria-label="Page navigation">
+        <a href="index.html">Back to Home</a>
+        <a href="mailto:hello@narelledobiedesigns.com">Enquire About a Project</a>
+      </nav>
+    </header>
+
+    <main class="panel">
+      <section class="intro">
+        <h2>Project Gallery</h2>
+        <p>Each card below links directly to a PDF. Add more cards as needed for future projects.</p>
+      </section>
+
+      <section class="project-grid" aria-label="Project list">
+        <a class="project-card" href="pdfs/project-01.pdf" target="_blank" rel="noopener noreferrer">
+          <img src="images/banner.jpg" alt="Preview image for Project 01" />
+          <div class="project-copy">
+            <h3>Project 01</h3>
+            <p>Replace this text with the project name, location, and a short summary.</p>
+            <span>Open PDF</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="pdfs/project-02.pdf" target="_blank" rel="noopener noreferrer">
+          <img src="images/banner2.jpg" alt="Preview image for Project 02" />
+          <div class="project-copy">
+            <h3>Project 02</h3>
+            <p>Use a thumbnail image here and point the link to the full project PDF.</p>
+            <span>Open PDF</span>
+          </div>
+        </a>
+      </section>
+
+      <p class="note">Current project cards are placeholders. Add your PDF files under `pdfs/` and update each card's `href`, image `src`, title, and summary.</p>
+    </main>
+  </div>
+</body>
+</html>
