@@ -60,7 +60,6 @@
 
     /* Banner area */
     header{
-      position: relative;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -68,19 +67,11 @@
       background: rgba(0,0,0,.10);
     }
     .brand{
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      z-index: 2;
-      padding: 14px 16px;
+      padding: 18px 18px 10px;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      align-items: baseline;
       gap: 10px;
-      max-width: min(92%, 420px);
-      border-radius: 16px;
-      background: rgba(255,255,255,.58);
-      backdrop-filter: blur(8px);
+      flex-wrap: wrap;
     }
     .brand h1{
       margin: 0;
@@ -94,7 +85,7 @@
       height: auto;
     }
     .brand .tag{
-      color: var(--ink);
+      color: var(--muted);
       font-size: .95rem;
     }
 
@@ -328,18 +319,6 @@
       .banner{
         min-height: 140px;
       }
-      .brand{
-        top: 12px;
-        left: 12px;
-        padding: 10px 12px;
-        gap: 6px;
-      }
-      .brand-logo{
-        width: min(100%, 240px);
-      }
-      .brand .tag{
-        font-size: .88rem;
-      }
     }
   </style>
 </head>
@@ -349,12 +328,11 @@
 
   <div class="wrap">
     <header>
-      <div class="banner" role="img" aria-label="Banner image">
       <div class="brand">
         <img class="brand-logo" src="images/logo rightsize.jpg" alt="Narelle Dobie Design" />
         <div class="tag">Architectural Design • Residential • Alterations • Documentation</div>
       </div>
-      </div>
+      <div class="banner" role="img" aria-label="Banner placeholder"></div>
     </header>
 
     <nav aria-label="Main navigation">
