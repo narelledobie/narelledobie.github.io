@@ -33,7 +33,7 @@
     html, body { height: 100%; }
     body{
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: "Century Gothic Pro", "Century Gothic", Avenir, "Trebuchet MS", sans-serif;
       color: var(--ink);
       background: var(--bg);
       line-height: 1.5;
@@ -156,6 +156,23 @@
       color: var(--muted);
       font-size: .9rem;
       padding: 0 8px;
+    }
+
+    .intro-copy{
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      padding: 20px 22px;
+    }
+    .intro-copy p{
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+    .intro-copy p:last-child{
+      margin-bottom: 0;
     }
 
     /* Main layout */
@@ -353,6 +370,12 @@
       </div>
       </div>
     </header>
+
+    <section class="intro-copy" aria-label="Practice introduction">
+      <p>At the heart of our practice is a commitment to personalised architectural design, tailored to the way you live. Based in the Geelong region, we specialise in residential projects of all scales — from new home designs and secondary dwellings to thoughtful renovations, floor plan improvements, and internal fit-outs.</p>
+      <p>We work closely with each client to understand their vision, lifestyle, and budget, transforming ideas into practical, beautifully considered spaces. Whether you’re reimagining an existing home or starting from scratch, our approach combines creativity with functionality to deliver designs that truly work.</p>
+      <p>From early concept sketches through to detailed drafting, we provide a seamless design process that ensures clarity, efficiency, and confidence at every stage.</p>
+    </section>
 
     <nav aria-label="Main navigation">
       <div class="nav-inner">
