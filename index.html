@@ -370,11 +370,14 @@
         min-height: 280px;
       }
       .brand{
-        top: 12px;
-        left: 12px;
-        padding: 0;
+        top: clamp(12px, 4vw, 24px);
+        left: clamp(12px, 4vw, 24px);
+        padding: clamp(8px, 2.5vw, 14px);
         gap: 6px;
-        max-width: calc(100% - 24px);
+        max-width: calc(100% - clamp(24px, 8vw, 48px));
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(246,248,247,.78), rgba(246,248,247,.36));
+        backdrop-filter: blur(8px);
       }
       .brand-logo{
         width: min(100%, 600px);
@@ -492,7 +495,7 @@
       </aside>
 
       <!-- RIGHT PANEL -->
-      <section class="panel anchor" aria-live="polite" aria-atomic="true">
+      <section class="panel anchor" id="servicePanel" aria-live="polite" aria-atomic="true">
         <div id="panelContent">
           <!-- This gets replaced by JS when a service is clicked -->
         </div>
@@ -563,6 +566,7 @@
     };
 
     const panel = document.getElementById("panelContent");
+    const servicePanel = document.getElementById("servicePanel");
     const serviceList = document.getElementById("serviceList");
 
     function renderPanel(key){
@@ -590,6 +594,11 @@
       if(!btn) return;
       setPressed(btn);
       renderPanel(btn.dataset.service);
+      if(window.matchMedia("(max-width: 900px)").matches){
+        requestAnimationFrame(() => {
+          servicePanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
     });
   </script>
 </body>
