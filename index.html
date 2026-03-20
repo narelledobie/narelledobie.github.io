@@ -96,6 +96,13 @@
       color: var(--ink);
       font-size: .9rem;
     }
+    .brand-tag-mobile{
+      display: none;
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: .82rem;
+      text-align: center;
+    }
 
     /* Placeholder banner strip (swap for your image later) */
 .banner{
@@ -374,9 +381,10 @@
         height: 93px;
       }
       .brand .tag{
-        width: min(100%, 300px);
-        font-size: .82rem;
-        text-align: center;
+        display: none;
+      }
+      .brand-tag-mobile{
+        display: block;
       }
     }
   </style>
@@ -393,6 +401,7 @@
         <div class="tag">Architectural Design • Residential • Alterations • Documentation</div>
       </div>
       </div>
+      <div class="brand-tag-mobile">Architectural Design â€¢ Residential â€¢ Alterations â€¢ Documentation</div>
     </header>
 
     <nav aria-label="Main navigation">
