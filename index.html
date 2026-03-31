@@ -236,18 +236,19 @@
       padding: 10px 10px;
       border-radius: 14px;
       cursor: pointer;
-      transition: background .2s ease, transform .08s ease, border-color .2s ease;
+      transition: background .2s ease, transform .08s ease, border-color .2s ease, box-shadow .2s ease;
       font: inherit;
       font-weight: 600;
     }
     .service-list button:hover{
       background: rgba(255,255,255,.05);
       transform: translateY(-1px);
-      border-color: rgba(180,138,87,.45);
+      border-color: rgba(143,174,164,.45);
     }
     .service-list button[aria-pressed="true"]{
-      border-color: rgba(180,138,87,.75);
-      background: rgba(180,138,87,.14);
+      border-color: rgba(143,174,164,.58);
+      background: rgba(143,174,164,.16);
+      box-shadow: 0 8px 18px rgba(143,174,164,.18);
     }
     .service-list small{
       display: block;
