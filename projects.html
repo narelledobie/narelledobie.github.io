@@ -22,6 +22,7 @@
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body{
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -31,6 +32,8 @@
         url("images/banner.jpg") center/cover no-repeat,
         var(--bg);
       line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .wrap{
@@ -89,6 +92,12 @@
 
     .hero-nav a:hover{
       background: rgba(255,255,255,.18);
+    }
+
+    .hero-nav a:focus-visible,
+    .project-card:focus-visible{
+      outline: 3px solid rgba(47, 52, 51, .4);
+      outline-offset: 3px;
     }
 
     .panel{
@@ -158,6 +167,7 @@
       margin: 0 0 10px;
       color: var(--muted);
       font-size: .95rem;
+      overflow-wrap: anywhere;
     }
 
     .project-copy span{
@@ -176,6 +186,57 @@
     @media (max-width: 800px){
       .project-grid{
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px){
+      .wrap{
+        padding: 10px 10px 40px;
+      }
+      .hero,
+      .panel{
+        border-radius: 14px;
+      }
+      .hero{
+        margin-bottom: 10px;
+      }
+      .hero-copy{
+        padding: 16px 16px 10px;
+      }
+      .hero-copy h1{
+        font-size: clamp(1.5rem, 8vw, 2rem);
+      }
+      .hero-nav{
+        padding: 0 16px 16px;
+      }
+      .hero-nav a{
+        width: 100%;
+        min-height: 44px;
+      }
+      .panel{
+        padding: 12px;
+      }
+      .intro{
+        margin: 2px 2px 14px;
+      }
+      .project-grid{
+        gap: 12px;
+      }
+      .project-card{
+        border-radius: 12px;
+      }
+      .project-card img{
+        aspect-ratio: 16 / 10;
+      }
+      .project-copy{
+        padding: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html { scroll-behavior: auto; }
+      *, *::before, *::after{
+        transition-duration: .01ms !important;
       }
     }
   </style>

@@ -30,17 +30,22 @@
 
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html { scroll-behavior: smooth; }
+    html, body { min-height: 100%; }
     body{
       margin: 0;
       font-family: "Century Gothic Pro", "Century Gothic", Avenir, "Trebuchet MS", sans-serif;
       color: var(--ink);
       background: var(--bg);
       line-height: 1.5;
+      overflow-x: hidden;
     }
 
     /* Background image layer */
-   .bg{
+    .bg{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background:
     linear-gradient(
       180deg,
@@ -161,6 +166,12 @@
       border-color: var(--line);
       transform: translateY(-1px);
     }
+    .nav-links a:focus-visible,
+    .service-list button:focus-visible,
+    .contact-list a:focus-visible{
+      outline: 3px solid rgba(47, 52, 51, .4);
+      outline-offset: 2px;
+    }
     .nav-cta{
       color: var(--muted);
       font-size: .9rem;
@@ -273,6 +284,7 @@
       padding: 10px 10px;
       border-radius: 14px;
       display: block;
+      overflow-wrap: anywhere;
     }
     .contact-list a:hover{
       border-color: rgba(255,255,255,.16);
@@ -368,7 +380,9 @@
         padding: 6px 10px 2px;
       }
       .banner{
-        min-height: 280px;
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        background-size: cover;
       }
       .brand{
         top: clamp(12px, 4vw, 24px);
@@ -381,14 +395,106 @@
         backdrop-filter: blur(8px);
       }
       .brand-logo{
-        width: min(100%, 600px);
-        height: 186px;
+        width: min(72vw, 420px);
+        height: auto;
+        max-height: 120px;
+        object-fit: contain;
+        object-position: left center;
       }
       .brand .tag{
         display: none;
       }
       .brand-tag-mobile{
         display: block;
+      }
+    }
+
+    @media (max-width: 600px){
+      .wrap{
+        padding: 10px 10px 40px;
+      }
+      header,
+      nav,
+      .intro-copy,
+      .card,
+      .panel{
+        border-radius: 14px;
+      }
+      nav{
+        position: static;
+        margin-top: 10px;
+      }
+      .nav-inner{
+        padding: 6px;
+      }
+      .nav-links{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+      }
+      .nav-links a{
+        min-height: 44px;
+        padding: 8px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: .82rem;
+        line-height: 1.2;
+      }
+      .nav-cta{
+        display: none;
+      }
+      .brand{
+        top: 8px;
+        left: 8px;
+        max-width: calc(100% - 16px);
+        padding: 6px;
+        border-radius: 12px;
+      }
+      .brand-logo{
+        width: min(68vw, 300px);
+        max-height: 88px;
+      }
+      .brand-tag-mobile{
+        margin: 0;
+        padding: 8px 10px;
+        font-size: .72rem;
+        line-height: 1.35;
+      }
+      .intro-copy{
+        margin-top: 10px;
+        padding: 16px;
+      }
+      .intro-copy p{
+        font-size: .95rem;
+      }
+      main{
+        margin-top: 10px;
+        gap: 10px;
+      }
+      .panel{
+        min-height: 0;
+        padding: 16px;
+      }
+      .card .bd{
+        padding: 10px;
+      }
+      .service-list button,
+      .contact-list a{
+        min-height: 44px;
+      }
+      section.anchor{
+        scroll-margin-top: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html { scroll-behavior: auto; }
+      *, *::before, *::after{
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
