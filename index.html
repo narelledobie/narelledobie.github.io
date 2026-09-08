@@ -153,7 +153,8 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 4px;
     }
-    .nav-links a{
+    .nav-links > a,
+    .nav-item > a{
       text-decoration: none;
       color: var(--ink);
       padding: 7px 8px;
@@ -165,16 +166,65 @@
       text-align: center;
       line-height: 1.2;
     }
-    .nav-links a:hover{
+    .nav-links > a:hover,
+    .nav-item > a:hover{
       background: rgba(255,255,255,.16);
       border-color: var(--line);
       transform: translateY(-1px);
     }
     .nav-links a:focus-visible,
     .service-list button:focus-visible,
+    .service-list .service-menu-link:focus-visible,
     .contact-list a:focus-visible{
       outline: 3px solid rgba(47, 52, 51, .4);
       outline-offset: 2px;
+    }
+    .nav-item{
+      position: relative;
+      min-width: 0;
+    }
+    .nav-item > a{
+      display: block;
+    }
+    .submenu{
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: max-content;
+      min-width: 230px;
+      max-width: min(320px, 80vw);
+      display: grid;
+      gap: 3px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(246,248,247,.97);
+      box-shadow: var(--shadow);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease, visibility .16s ease;
+    }
+    .nav-item:hover .submenu,
+    .nav-item:focus-within .submenu{
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .submenu a{
+      padding: 8px 10px;
+      border-radius: 9px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .submenu a:hover,
+    .submenu a:focus-visible{
+      background: rgba(143,174,164,.2);
     }
     .menu-selection{
       position: absolute;
@@ -230,7 +280,8 @@
       display: grid;
       gap: 8px;
     }
-    .service-list button{
+    .service-list button,
+    .service-list .service-menu-link{
       width: 100%;
       text-align: left;
       border: 1px solid var(--line);
@@ -242,8 +293,11 @@
       transition: background .2s ease, transform .08s ease, border-color .2s ease, box-shadow .2s ease;
       font: inherit;
       font-weight: 600;
+      display: block;
+      text-decoration: none;
     }
-    .service-list button:hover{
+    .service-list button:hover,
+    .service-list .service-menu-link:hover{
       background: rgba(255,255,255,.05);
       transform: translateY(-1px);
       border-color: rgba(143,174,164,.45);
@@ -425,7 +479,8 @@
         grid-template-columns: 1fr;
         gap: 4px;
       }
-      .nav-links a{
+      .nav-links > a,
+      .nav-item > a{
         min-height: 36px;
         padding: 5px 4px;
         display: flex;
@@ -434,6 +489,11 @@
         text-align: center;
         font-size: .74rem;
         line-height: 1.2;
+      }
+      .submenu{
+        top: 0;
+        left: auto;
+        right: calc(100% + 6px);
       }
       .brand{
         top: 0;
@@ -506,7 +566,16 @@
         <div class="nav-inner">
           <div class="nav-links">
             <a href="#servicePanel" data-menu-name="About" data-panel="about">About</a>
-            <a href="#services" data-menu-name="Services">Services</a>
+            <div class="nav-item">
+              <a href="#services" data-menu-name="Services" aria-haspopup="true">Services</a>
+              <div class="submenu" aria-label="Services submenu">
+                <a href="#servicePanel" data-menu-name="Services" data-service="concept">Concept Design</a>
+                <a href="#servicePanel" data-menu-name="Services" data-service="documentation">Detailed Documentation</a>
+                <a href="#servicePanel" data-menu-name="Services" data-service="alterations">Renovations, Secondary Dwellings &amp; Extensions</a>
+                <a href="#servicePanel" data-menu-name="Services" data-service="interiors">Interior Layout &amp; Finishes</a>
+                <a href="#servicePanel" data-menu-name="Services" data-service="subcontracting">Subcontracting</a>
+              </div>
+            </div>
             <a href="projects.html" data-menu-name="Recent Projects">Recent Projects</a>
             <a href="#contact" data-menu-name="Contact">Contact</a>
           </div>
@@ -525,6 +594,12 @@
         <div class="bd">
           <ul class="service-list" id="serviceList">
             <!-- Add/remove services here -->
+            <li>
+              <button type="button" data-service="about" aria-pressed="true">
+                About
+                <small>About Right Size Drafting and Design</small>
+              </button>
+            </li>
             <li>
               <button type="button" data-service="concept" aria-pressed="false">
                 Concept Design
@@ -554,6 +629,12 @@
                 Subcontracting
                 <small>Professional drafting and design support</small>
               </button>
+            </li>
+            <li>
+              <a class="service-menu-link" href="projects.html">
+                Recent Projects
+                <small>View the project gallery and PDFs</small>
+              </a>
             </li>
           </ul>
         </div>
@@ -735,9 +816,16 @@
       menuSelection.textContent = link.dataset.menuName;
       if(link.dataset.panel === "about"){
         serviceList.querySelectorAll("button[data-service]").forEach((button) => {
-          button.setAttribute("aria-pressed", "false");
+          button.setAttribute("aria-pressed", button.dataset.service === "about" ? "true" : "false");
         });
         renderPanel("about");
+      }
+      if(link.dataset.service){
+        const matchingButton = serviceList.querySelector(
+          `button[data-service="${link.dataset.service}"]`
+        );
+        if(matchingButton) setPressed(matchingButton);
+        renderPanel(link.dataset.service);
       }
     });
 
@@ -747,7 +835,7 @@
       if(!btn) return;
       setPressed(btn);
       renderPanel(btn.dataset.service);
-      menuSelection.textContent = "Services";
+      menuSelection.textContent = btn.dataset.service === "about" ? "About" : "Services";
       if(window.matchMedia("(max-width: 900px)").matches){
         requestAnimationFrame(() => {
           servicePanel.scrollIntoView({ behavior: "smooth", block: "start" });
