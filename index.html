@@ -268,6 +268,29 @@
       font-size: 1rem;
       letter-spacing: .2px;
     }
+    .section-link{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .section-link:hover{
+      color: var(--muted);
+    }
+    .section-link:focus-visible{
+      outline: 3px solid rgba(47, 52, 51, .4);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
     .card .bd{
       padding: 12px 14px 14px;
     }
@@ -589,17 +612,7 @@
       <!-- LEFT SIDEBAR -->
       <aside class="card" id="serviceList">
         <div class="hd">
-          <h2>About</h2>
-        </div>
-        <div class="bd">
-          <ul class="service-list">
-            <li>
-              <button type="button" data-service="about" aria-pressed="true">
-                About
-                <small>About Right Size Drafting and Design</small>
-              </button>
-            </li>
-          </ul>
+          <button class="section-link" type="button" data-service="about" aria-pressed="true">About</button>
         </div>
 
         <div class="hd">
@@ -642,17 +655,7 @@
         </div>
 
         <div class="hd">
-          <h2>Recent Projects</h2>
-        </div>
-        <div class="bd">
-          <ul class="service-list">
-            <li>
-              <a class="service-menu-link" href="projects.html">
-                Recent Projects
-                <small>View the project gallery and PDFs</small>
-              </a>
-            </li>
-          </ul>
+          <button class="section-link" type="button" data-service="projects" aria-pressed="false">Recent Projects</button>
         </div>
 
         <div class="hd">
@@ -735,6 +738,17 @@
             the design process is structured to provide clarity, efficiency, and confidence
             at every stage, helping bring ideas to life in a seamless and enjoyable way.
           </p>
+        `
+      },
+      projects: {
+        title: "Recent Projects",
+        body: `
+          <p>Select a project to view its full PDF.</p>
+          <div class="pill-row">
+            <a class="pill" href="pdfs/project-01.pdf" target="_blank" rel="noopener noreferrer">Project One &mdash; Open PDF</a>
+            <a class="pill" href="pdfs/project-02.pdf" target="_blank" rel="noopener noreferrer">Project Two &mdash; Open PDF</a>
+          </div>
+          <p style="margin-top: 16px;"><a href="projects.html">View the full project gallery</a></p>
         `
       },
       concept: {
@@ -851,7 +865,11 @@
       if(!btn) return;
       setPressed(btn);
       renderPanel(btn.dataset.service);
-      menuSelection.textContent = btn.dataset.service === "about" ? "About" : "Services";
+      menuSelection.textContent = btn.dataset.service === "about"
+        ? "About"
+        : btn.dataset.service === "projects"
+          ? "Recent Projects"
+          : "Services";
       if(window.matchMedia("(max-width: 900px)").matches){
         requestAnimationFrame(() => {
           servicePanel.scrollIntoView({ behavior: "smooth", block: "start" });
