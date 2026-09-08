@@ -226,17 +226,6 @@
     .submenu a:focus-visible{
       background: rgba(143,174,164,.2);
     }
-    .menu-selection{
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      z-index: 3;
-      margin: 0;
-      color: var(--ink);
-      font-size: .95rem;
-      font-weight: 700;
-      text-shadow: 0 1px 6px rgba(246,248,247,.95);
-    }
     /* Main layout */
     main{
       margin-top: 16px;
@@ -539,12 +528,6 @@
         font-size: .72rem;
         line-height: 1.25;
       }
-      .menu-selection{
-        left: 8px;
-        bottom: 8px;
-        max-width: calc(100% - 16px);
-        font-size: .78rem;
-      }
       main{
         margin-top: 10px;
         gap: 10px;
@@ -605,7 +588,6 @@
           </div>
         </div>
       </nav>
-      <p class="menu-selection" id="menuSelection" aria-live="polite">About</p>
       </div>
     </header>
 
@@ -809,7 +791,6 @@
     const panel = document.getElementById("panelContent");
     const servicePanel = document.getElementById("servicePanel");
     const serviceList = document.getElementById("serviceList");
-    const menuSelection = document.getElementById("menuSelection");
 
     function renderPanel(key){
       const item = serviceDetails[key];
@@ -833,7 +814,6 @@
     document.querySelector(".nav-links").addEventListener("click", (e) => {
       const link = e.target.closest("a[data-menu-name]");
       if(!link) return;
-      menuSelection.textContent = link.dataset.menuName;
       if(link.dataset.panel === "about"){
         serviceList.querySelectorAll("button[data-service]").forEach((button) => {
           button.setAttribute("aria-pressed", button.dataset.service === "about" ? "true" : "false");
@@ -855,9 +835,6 @@
       if(!btn) return;
       setPressed(btn);
       renderPanel(btn.dataset.service);
-      menuSelection.textContent = btn.dataset.service === "about"
-        ? "About"
-        : "Services";
       if(window.matchMedia("(max-width: 900px)").matches){
         requestAnimationFrame(() => {
           servicePanel.scrollIntoView({ behavior: "smooth", block: "start" });
