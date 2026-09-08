@@ -97,16 +97,14 @@
       object-fit: cover;
       object-position: center;
     }
-    .brand .tag{
+    .brand-slogan{
       color: var(--ink);
       font-size: .9rem;
+      font-weight: 600;
     }
-    .brand-tag-mobile{
-      display: none;
-      margin-top: 10px;
+    .brand .tag{
       color: var(--ink);
-      font-size: .82rem;
-      text-align: center;
+      font-size: .75rem;
     }
 
     /* Placeholder banner strip (swap for your image later) */
@@ -128,9 +126,9 @@
 
     /* Nav */
     nav{
-      position: sticky;
-      top: 10px;
-      margin-top: 14px;
+      position: absolute;
+      top: 18px;
+      right: 18px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(143,174,164,.18);
@@ -145,6 +143,21 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+    }
+    .menu-selection{
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 3;
+      margin: 0;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(246,248,247,.82);
+      backdrop-filter: blur(8px);
+      color: var(--ink);
+      font-size: .88rem;
+      font-weight: 600;
     }
     .nav-links{
       display: flex;
@@ -172,12 +185,6 @@
       outline: 3px solid rgba(47, 52, 51, .4);
       outline-offset: 2px;
     }
-    .nav-cta{
-      color: var(--muted);
-      font-size: .9rem;
-      padding: 0 8px;
-    }
-
     .intro-copy{
       margin-top: 16px;
       border: 1px solid var(--line);
@@ -370,14 +377,14 @@
         grid-template-columns: 1fr;
       }
       nav{
-        top: 0;
+        top: 12px;
+        right: 12px;
       }
       .nav-inner{
         justify-content: flex-start;
       }
-      .nav-cta{
-        width: 100%;
-        padding: 6px 10px 2px;
+      .nav-links{
+        flex-direction: column;
       }
       .banner{
         min-height: 0;
@@ -389,7 +396,7 @@
         left: clamp(12px, 4vw, 24px);
         padding: clamp(8px, 2.5vw, 14px);
         gap: 6px;
-        max-width: calc(100% - clamp(24px, 8vw, 48px));
+        max-width: 56%;
         border-radius: 18px;
         background: linear-gradient(180deg, rgba(246,248,247,.78), rgba(246,248,247,.36));
         backdrop-filter: blur(8px);
@@ -400,12 +407,6 @@
         max-height: 120px;
         object-fit: contain;
         object-position: left center;
-      }
-      .brand .tag{
-        display: none;
-      }
-      .brand-tag-mobile{
-        display: block;
       }
     }
 
@@ -421,21 +422,23 @@
         border-radius: 14px;
       }
       nav{
-        position: static;
-        margin-top: 10px;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        margin: 0;
       }
       .nav-inner{
         padding: 6px;
       }
       .nav-links{
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        display: flex;
+        flex-direction: column;
         gap: 4px;
       }
       .nav-links a{
+        width: 100%;
         min-height: 44px;
-        padding: 8px 5px;
+        padding: 8px 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -443,25 +446,31 @@
         font-size: .82rem;
         line-height: 1.2;
       }
-      .nav-cta{
-        display: none;
-      }
       .brand{
         top: 8px;
         left: 8px;
-        max-width: calc(100% - 16px);
+        max-width: 58%;
         padding: 6px;
         border-radius: 12px;
       }
       .brand-logo{
-        width: min(68vw, 300px);
+        width: 100%;
         max-height: 88px;
       }
-      .brand-tag-mobile{
-        margin: 0;
-        padding: 8px 10px;
+      .brand-slogan{
+        font-size: .78rem;
+        line-height: 1.25;
+      }
+      .brand .tag{
         font-size: .72rem;
-        line-height: 1.35;
+        line-height: 1.25;
+      }
+      .menu-selection{
+        left: 8px;
+        bottom: 8px;
+        max-width: calc(100% - 16px);
+        padding: 6px 9px;
+        font-size: .75rem;
       }
       .intro-copy{
         margin-top: 10px;
@@ -508,22 +517,21 @@
       <div class="banner" role="img" aria-label="Banner image">
       <div class="brand">
         <img class="brand-logo" src="images/logo rightsize transparent.png?v=20260320-121655" alt="Narelle Dobie Design" />
+        <div class="brand-slogan">Modern, practical, collaborative design solutions.</div>
         <div class="tag">Architectural Design &bull; Residential &bull; Alterations &bull; Documentation</div>
       </div>
-      </div>
-      <div class="brand-tag-mobile">Architectural Design &bull; Residential &bull; Alterations &bull; Documentation</div>
-    </header>
-
-    <nav aria-label="Main navigation">
-      <div class="nav-inner">
-        <div class="nav-links">
-          <a href="#services">Services</a>
-          <a href="projects.html">Recent Projects</a>
-          <a href="#contact">Contact</a>
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <div class="nav-links">
+            <a href="#services" data-menu-name="Services">Services</a>
+            <a href="projects.html" data-menu-name="Recent Projects">Recent Projects</a>
+            <a href="#contact" data-menu-name="Contact">Contact</a>
+          </div>
         </div>
-        <div class="nav-cta">Modern, practical, collaborative design solutions.</div>
+      </nav>
+      <p class="menu-selection" id="menuSelection" aria-live="polite">Services</p>
       </div>
-    </nav>
+    </header>
 
     <section class="intro-copy" aria-label="Practice introduction">
       <p>
@@ -715,6 +723,7 @@
     const panel = document.getElementById("panelContent");
     const servicePanel = document.getElementById("servicePanel");
     const serviceList = document.getElementById("serviceList");
+    const menuSelection = document.getElementById("menuSelection");
 
     function renderPanel(key){
       const item = serviceDetails[key];
@@ -734,6 +743,12 @@
     // Init
     renderPanel("concept");
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelector(".nav-links").addEventListener("click", (e) => {
+      const link = e.target.closest("a[data-menu-name]");
+      if(!link) return;
+      menuSelection.textContent = link.dataset.menuName;
+    });
 
     // Click handling
     serviceList.addEventListener("click", (e) => {
