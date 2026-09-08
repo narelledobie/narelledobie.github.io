@@ -257,6 +257,10 @@
       font-size: 1rem;
       letter-spacing: .2px;
     }
+    .card .hd.is-active{
+      background: rgba(143,174,164,.16);
+      box-shadow: inset 0 0 0 1px rgba(143,174,164,.58);
+    }
     .section-link{
       display: block;
       width: 100%;
@@ -594,11 +598,11 @@
     <main>
       <!-- LEFT SIDEBAR -->
       <aside class="card" id="serviceList">
-        <div class="hd">
+        <div class="hd is-active" data-section="about">
           <button class="section-link" type="button" data-service="about" aria-pressed="true">About</button>
         </div>
 
-        <div class="hd">
+        <div class="hd" data-section="services">
           <h2 id="services">Services</h2>
         </div>
         <div class="bd">
@@ -637,11 +641,11 @@
           </ul>
         </div>
 
-        <div class="hd">
+        <div class="hd" data-section="projects">
           <a class="section-link" href="projects.html">Recent Projects</a>
         </div>
 
-        <div class="hd">
+        <div class="hd" data-section="contact">
           <h2 id="contact">Contact</h2>
         </div>
         <div class="bd">
@@ -807,6 +811,12 @@
       btn.setAttribute("aria-pressed", "true");
     }
 
+    function setActiveHeading(section){
+      serviceList.querySelectorAll(".hd[data-section]").forEach((heading) => {
+        heading.classList.toggle("is-active", heading.dataset.section === section);
+      });
+    }
+
     // Init
     renderPanel("about");
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -814,6 +824,10 @@
     document.querySelector(".nav-links").addEventListener("click", (e) => {
       const link = e.target.closest("a[data-menu-name]");
       if(!link) return;
+      const sectionName = link.dataset.menuName === "Recent Projects"
+        ? "projects"
+        : link.dataset.menuName.toLowerCase();
+      setActiveHeading(sectionName);
       if(link.dataset.panel === "about"){
         serviceList.querySelectorAll("button[data-service]").forEach((button) => {
           button.setAttribute("aria-pressed", button.dataset.service === "about" ? "true" : "false");
@@ -831,10 +845,13 @@
 
     // Click handling
     serviceList.addEventListener("click", (e) => {
+      const heading = e.target.closest(".hd[data-section]");
+      if(heading) setActiveHeading(heading.dataset.section);
       const btn = e.target.closest("button[data-service]");
       if(!btn) return;
       setPressed(btn);
       renderPanel(btn.dataset.service);
+      setActiveHeading(btn.dataset.service === "about" ? "about" : "services");
       if(window.matchMedia("(max-width: 900px)").matches){
         requestAnimationFrame(() => {
           servicePanel.scrollIntoView({ behavior: "smooth", block: "start" });
