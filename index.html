@@ -269,6 +269,7 @@
       letter-spacing: .2px;
     }
     .section-link{
+      display: block;
       width: 100%;
       margin: 0;
       padding: 0;
@@ -655,7 +656,7 @@
         </div>
 
         <div class="hd">
-          <button class="section-link" type="button" data-service="projects" aria-pressed="false">Recent Projects</button>
+          <a class="section-link" href="projects.html">Recent Projects</a>
         </div>
 
         <div class="hd">
@@ -738,17 +739,6 @@
             the design process is structured to provide clarity, efficiency, and confidence
             at every stage, helping bring ideas to life in a seamless and enjoyable way.
           </p>
-        `
-      },
-      projects: {
-        title: "Recent Projects",
-        body: `
-          <p>Select a project to view its full PDF.</p>
-          <div class="pill-row">
-            <a class="pill" href="pdfs/project-01.pdf" target="_blank" rel="noopener noreferrer">Project One &mdash; Open PDF</a>
-            <a class="pill" href="pdfs/project-02.pdf" target="_blank" rel="noopener noreferrer">Project Two &mdash; Open PDF</a>
-          </div>
-          <p style="margin-top: 16px;"><a href="projects.html">View the full project gallery</a></p>
         `
       },
       concept: {
@@ -867,9 +857,7 @@
       renderPanel(btn.dataset.service);
       menuSelection.textContent = btn.dataset.service === "about"
         ? "About"
-        : btn.dataset.service === "projects"
-          ? "Recent Projects"
-          : "Services";
+        : "Services";
       if(window.matchMedia("(max-width: 900px)").matches){
         requestAnimationFrame(() => {
           servicePanel.scrollIntoView({ behavior: "smooth", block: "start" });
