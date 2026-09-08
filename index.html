@@ -126,9 +126,11 @@
 
     /* Nav */
     nav{
-      position: sticky;
-      top: 10px;
-      margin-top: 14px;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: min(48%, 500px);
+      margin: 0;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(143,174,164,.18);
@@ -138,26 +140,29 @@
     }
     .nav-inner{
       display: flex;
-      gap: 8px;
-      padding: 10px;
+      gap: 6px;
+      padding: 6px;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
     }
     .nav-links{
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 4px;
     }
     .nav-links a{
       text-decoration: none;
       color: var(--ink);
-      padding: 10px 12px;
+      padding: 7px 8px;
       border-radius: 12px;
       border: 1px solid transparent;
       transition: transform .08s ease, background .2s ease, border-color .2s ease;
       font-weight: 600;
-      font-size: .95rem;
+      font-size: .86rem;
+      text-align: center;
+      line-height: 1.2;
     }
     .nav-links a:hover{
       background: rgba(255,255,255,.16);
@@ -169,6 +174,17 @@
     .contact-list a:focus-visible{
       outline: 3px solid rgba(47, 52, 51, .4);
       outline-offset: 2px;
+    }
+    .menu-selection{
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 3;
+      margin: 0;
+      color: var(--ink);
+      font-size: .95rem;
+      font-weight: 700;
+      text-shadow: 0 1px 6px rgba(246,248,247,.95);
     }
     .intro-copy{
       margin-top: 16px;
@@ -362,7 +378,9 @@
         grid-template-columns: 1fr;
       }
       nav{
-        top: 0;
+        top: 12px;
+        right: 12px;
+        width: 42%;
       }
       .nav-inner{
         justify-content: flex-start;
@@ -377,7 +395,7 @@
         left: clamp(12px, 4vw, 24px);
         padding: clamp(8px, 2.5vw, 14px);
         gap: 6px;
-        max-width: calc(100% - clamp(24px, 8vw, 48px));
+        max-width: 52%;
         border-radius: 18px;
         background: linear-gradient(180deg, rgba(246,248,247,.78), rgba(246,248,247,.36));
         backdrop-filter: blur(8px);
@@ -403,37 +421,38 @@
         border-radius: 14px;
       }
       nav{
-        position: static;
-        margin-top: 10px;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 40%;
+        margin: 0;
       }
       .nav-inner{
         padding: 6px;
       }
       .nav-links{
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: 1fr;
         gap: 4px;
       }
       .nav-links a{
-        min-height: 44px;
-        padding: 8px 5px;
+        min-height: 36px;
+        padding: 5px 4px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        font-size: .82rem;
+        font-size: .74rem;
         line-height: 1.2;
       }
       .brand{
         top: 8px;
         left: 8px;
-        max-width: calc(100% - 16px);
+        max-width: 54%;
         padding: 6px;
         border-radius: 12px;
       }
       .brand-logo{
-        width: min(68vw, 300px);
+        width: 100%;
         max-height: 88px;
       }
       .brand-slogan{
@@ -443,6 +462,12 @@
       .brand .tag{
         font-size: .72rem;
         line-height: 1.25;
+      }
+      .menu-selection{
+        left: 8px;
+        bottom: 8px;
+        max-width: calc(100% - 16px);
+        font-size: .78rem;
       }
       .intro-copy{
         margin-top: 10px;
@@ -492,18 +517,18 @@
         <div class="brand-slogan">Modern, practical, collaborative design solutions.</div>
         <div class="tag">Architectural Design &bull; Residential &bull; Alterations &bull; Documentation</div>
       </div>
+      <nav aria-label="Main navigation">
+        <div class="nav-inner">
+          <div class="nav-links">
+            <a href="#services" data-menu-name="Services">Services</a>
+            <a href="projects.html" data-menu-name="Recent Projects">Recent Projects</a>
+            <a href="#contact" data-menu-name="Contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+      <p class="menu-selection" id="menuSelection" aria-live="polite">Services</p>
       </div>
     </header>
-
-    <nav aria-label="Main navigation">
-      <div class="nav-inner">
-        <div class="nav-links">
-          <a href="#services">Services</a>
-          <a href="projects.html">Recent Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </nav>
 
     <section class="intro-copy" aria-label="Practice introduction">
       <p>
@@ -695,6 +720,7 @@
     const panel = document.getElementById("panelContent");
     const servicePanel = document.getElementById("servicePanel");
     const serviceList = document.getElementById("serviceList");
+    const menuSelection = document.getElementById("menuSelection");
 
     function renderPanel(key){
       const item = serviceDetails[key];
@@ -714,6 +740,12 @@
     // Init
     renderPanel("concept");
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelector(".nav-links").addEventListener("click", (e) => {
+      const link = e.target.closest("a[data-menu-name]");
+      if(!link) return;
+      menuSelection.textContent = link.dataset.menuName;
+    });
 
     // Click handling
     serviceList.addEventListener("click", (e) => {
