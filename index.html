@@ -587,19 +587,27 @@
 
     <main>
       <!-- LEFT SIDEBAR -->
-      <aside class="card">
+      <aside class="card" id="serviceList">
         <div class="hd">
-          <h2 id="services">Services</h2>
+          <h2>About</h2>
         </div>
         <div class="bd">
-          <ul class="service-list" id="serviceList">
-            <!-- Add/remove services here -->
+          <ul class="service-list">
             <li>
               <button type="button" data-service="about" aria-pressed="true">
                 About
                 <small>About Right Size Drafting and Design</small>
               </button>
             </li>
+          </ul>
+        </div>
+
+        <div class="hd">
+          <h2 id="services">Services</h2>
+        </div>
+        <div class="bd">
+          <ul class="service-list">
+            <!-- Add/remove services here -->
             <li>
               <button type="button" data-service="concept" aria-pressed="false">
                 Concept Design
@@ -630,6 +638,14 @@
                 <small>Professional drafting and design support</small>
               </button>
             </li>
+          </ul>
+        </div>
+
+        <div class="hd">
+          <h2>Recent Projects</h2>
+        </div>
+        <div class="bd">
+          <ul class="service-list">
             <li>
               <a class="service-menu-link" href="projects.html">
                 Recent Projects
