@@ -101,6 +101,7 @@
       color: var(--ink);
       font-size: .9rem;
       font-weight: 600;
+      margin-top: -18px;
     }
     .brand .tag{
       color: var(--ink);
@@ -109,17 +110,17 @@
 
     /* Placeholder banner strip (swap for your image later) */
 .banner{
-  height: clamp(320px, 44vw, 480px);
+  height: clamp(360px, 48vw, 520px);
   min-height: 0;
   background-image: url("images/banner2 copy.png");
-  background-size: cover;
-  background-position: center 45%;
+  background-size: 100% auto;
+  background-position: center bottom;
   background-repeat: no-repeat;
   background-color: rgba(246,248,247,.72);
 }
 @media (max-width: 900px){
   .banner{
-    height: clamp(300px, 58vw, 400px);
+    height: clamp(340px, 52vw, 440px);
   }
 }
 
@@ -387,8 +388,8 @@
       }
       .banner{
         min-height: 0;
-        background-size: cover;
-        background-position: center 38%;
+        background-size: 100% auto;
+        background-position: center bottom;
       }
       .brand{
         top: 0;
@@ -407,13 +408,16 @@
         object-fit: contain;
         object-position: left center;
       }
+      .brand-slogan{
+        margin-top: -28px;
+      }
     }
 
     @media (max-width: 600px){
       .banner{
         height: 300px;
-        background-size: auto 125%;
-        background-position: center 20%;
+        background-size: auto 110%;
+        background-position: center bottom;
       }
       .wrap{
         padding: 10px 10px 40px;
@@ -463,6 +467,7 @@
       .brand-slogan{
         font-size: .78rem;
         line-height: 1.25;
+        margin-top: -24px;
       }
       .brand .tag{
         font-size: .72rem;
