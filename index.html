@@ -74,14 +74,14 @@
     }
     .brand{
       position: absolute;
-      top: 8px;
+      top: 0;
       left: 18px;
       z-index: 2;
       padding: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 3px;
+      gap: 0;
       max-width: min(92%, 525px);
     }
     .brand h1{
@@ -109,17 +109,17 @@
 
     /* Placeholder banner strip (swap for your image later) */
 .banner{
-  height: clamp(300px, 40vw, 430px);
+  height: clamp(320px, 44vw, 480px);
   min-height: 0;
   background-image: url("images/banner2 copy.png");
   background-size: cover;
-  background-position: center 76%;
+  background-position: center 45%;
   background-repeat: no-repeat;
   background-color: rgba(246,248,247,.72);
 }
 @media (max-width: 900px){
   .banner{
-    height: clamp(280px, 54vw, 380px);
+    height: clamp(300px, 58vw, 400px);
   }
 }
 
@@ -388,13 +388,13 @@
       .banner{
         min-height: 0;
         background-size: cover;
-        background-position: center 76%;
+        background-position: center 38%;
       }
       .brand{
-        top: 8px;
+        top: 0;
         left: clamp(12px, 4vw, 24px);
         padding: clamp(8px, 2.5vw, 14px);
-        gap: 3px;
+        gap: 0;
         max-width: 52%;
         border-radius: 18px;
         background: linear-gradient(180deg, rgba(246,248,247,.78), rgba(246,248,247,.36));
@@ -411,9 +411,9 @@
 
     @media (max-width: 600px){
       .banner{
-        height: 280px;
+        height: 300px;
         background-size: auto 125%;
-        background-position: center 76%;
+        background-position: center 20%;
       }
       .wrap{
         padding: 10px 10px 40px;
@@ -450,7 +450,7 @@
         line-height: 1.2;
       }
       .brand{
-        top: 8px;
+        top: 0;
         left: 8px;
         max-width: 54%;
         padding: 6px;
