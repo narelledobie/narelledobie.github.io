@@ -130,7 +130,7 @@
       position: absolute;
       top: 18px;
       right: 18px;
-      width: min(48%, 500px);
+      width: min(55%, 600px);
       margin: 0;
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -150,7 +150,7 @@
     .nav-links{
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 4px;
     }
     .nav-links a{
@@ -187,28 +187,11 @@
       font-weight: 700;
       text-shadow: 0 1px 6px rgba(246,248,247,.95);
     }
-    .intro-copy{
-      margin-top: 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-      padding: 20px 22px;
-    }
-    .intro-copy p{
-      margin: 0 0 14px;
-      color: var(--muted);
-    }
-    .intro-copy p:last-child{
-      margin-bottom: 0;
-    }
-
     /* Main layout */
     main{
       margin-top: 16px;
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 320px minmax(0, 1fr);
       gap: 16px;
       align-items: start;
     }
@@ -381,7 +364,7 @@
       nav{
         top: 12px;
         right: 12px;
-        width: 42%;
+        width: 48%;
       }
       .nav-inner{
         justify-content: flex-start;
@@ -396,7 +379,7 @@
         left: clamp(12px, 4vw, 24px);
         padding: clamp(8px, 2.5vw, 14px);
         gap: 0;
-        max-width: 52%;
+        max-width: 50%;
         border-radius: 18px;
         background: linear-gradient(180deg, rgba(246,248,247,.78), rgba(246,248,247,.36));
         backdrop-filter: blur(8px);
@@ -424,7 +407,6 @@
       }
       header,
       nav,
-      .intro-copy,
       .card,
       .panel{
         border-radius: 14px;
@@ -433,7 +415,7 @@
         position: absolute;
         top: 8px;
         right: 8px;
-        width: 40%;
+        width: 44%;
         margin: 0;
       }
       .nav-inner{
@@ -456,7 +438,7 @@
       .brand{
         top: 0;
         left: 8px;
-        max-width: 54%;
+        max-width: 52%;
         padding: 6px;
         border-radius: 12px;
       }
@@ -478,13 +460,6 @@
         bottom: 8px;
         max-width: calc(100% - 16px);
         font-size: .78rem;
-      }
-      .intro-copy{
-        margin-top: 10px;
-        padding: 16px;
-      }
-      .intro-copy p{
-        font-size: .95rem;
       }
       main{
         margin-top: 10px;
@@ -530,54 +505,19 @@
       <nav aria-label="Main navigation">
         <div class="nav-inner">
           <div class="nav-links">
+            <a href="#servicePanel" data-menu-name="About" data-panel="about">About</a>
             <a href="#services" data-menu-name="Services">Services</a>
             <a href="projects.html" data-menu-name="Recent Projects">Recent Projects</a>
             <a href="#contact" data-menu-name="Contact">Contact</a>
           </div>
         </div>
       </nav>
-      <p class="menu-selection" id="menuSelection" aria-live="polite">Services</p>
+      <p class="menu-selection" id="menuSelection" aria-live="polite">About</p>
       </div>
     </header>
 
-    <section class="intro-copy" aria-label="Practice introduction">
-      <p>
-        At Right Size Drafting and Design, every project begins with a commitment to
-        personalised architectural design tailored to the way clients live, work, and
-        interact with their space. Based in the Geelong region, the practice
-        specialises in residential projects of all scales &mdash; from new home designs
-        and secondary dwellings to thoughtful renovations, extensions, floor plan
-        improvements, and internal fit-outs.
-      </p>
-      <p>
-        A particular focus is placed on unlocking the potential of existing homes and
-        buildings. Through careful planning and considered design, underutilised spaces
-        can be transformed to improve functionality, increase natural light, create
-        better flow, and adapt to changing family needs. Great design doesn't always
-        require a complete rebuild; often the most successful outcomes come from making
-        the most of what already exists.
-      </p>
-      <p>
-        Every project is approached with a balance of creativity, practicality, and
-        attention to detail. By taking the time to understand each client's vision,
-        lifestyle, and budget, tailored design solutions can be developed that are both
-        visually appealing and highly functional.
-      </p>
-      <p>
-        Quality design should be accessible. Right Size Drafting and Design is
-        committed to providing professional architectural design and drafting services
-        at fair and affordable rates, ensuring clients receive exceptional value
-        without compromising on quality.
-      </p>
-      <p>
-        From initial concept sketches through to detailed drafting and documentation,
-        the design process is structured to provide clarity, efficiency, and confidence
-        at every stage, helping bring ideas to life in a seamless and enjoyable way.
-      </p>
-    </section>
-
     <main>
-      <!-- LEFT COLUMN -->
+      <!-- LEFT SIDEBAR -->
       <aside class="card">
         <div class="hd">
           <h2 id="services">Services</h2>
@@ -586,7 +526,7 @@
           <ul class="service-list" id="serviceList">
             <!-- Add/remove services here -->
             <li>
-              <button type="button" data-service="concept" aria-pressed="true">
+              <button type="button" data-service="concept" aria-pressed="false">
                 Concept Design
                 <small>Early ideas, layout options, design direction</small>
               </button>
@@ -662,6 +602,44 @@
   <script>
     // Service details (edit freely)
     const serviceDetails = {
+      about: {
+        title: "About Right Size Drafting and Design",
+        body: `
+          <p>
+            At Right Size Drafting and Design, every project begins with a commitment to
+            personalised architectural design tailored to the way clients live, work, and
+            interact with their space. Based in the Geelong region, the practice
+            specialises in residential projects of all scales &mdash; from new home designs
+            and secondary dwellings to thoughtful renovations, extensions, floor plan
+            improvements, and internal fit-outs.
+          </p>
+          <p>
+            A particular focus is placed on unlocking the potential of existing homes and
+            buildings. Through careful planning and considered design, underutilised spaces
+            can be transformed to improve functionality, increase natural light, create
+            better flow, and adapt to changing family needs. Great design doesn't always
+            require a complete rebuild; often the most successful outcomes come from making
+            the most of what already exists.
+          </p>
+          <p>
+            Every project is approached with a balance of creativity, practicality, and
+            attention to detail. By taking the time to understand each client's vision,
+            lifestyle, and budget, tailored design solutions can be developed that are both
+            visually appealing and highly functional.
+          </p>
+          <p>
+            Quality design should be accessible. Right Size Drafting and Design is
+            committed to providing professional architectural design and drafting services
+            at fair and affordable rates, ensuring clients receive exceptional value
+            without compromising on quality.
+          </p>
+          <p>
+            From initial concept sketches through to detailed drafting and documentation,
+            the design process is structured to provide clarity, efficiency, and confidence
+            at every stage, helping bring ideas to life in a seamless and enjoyable way.
+          </p>
+        `
+      },
       concept: {
         title: "Collaborative concepts",
         body: `
@@ -748,13 +726,19 @@
     }
 
     // Init
-    renderPanel("concept");
+    renderPanel("about");
     document.getElementById("year").textContent = new Date().getFullYear();
 
     document.querySelector(".nav-links").addEventListener("click", (e) => {
       const link = e.target.closest("a[data-menu-name]");
       if(!link) return;
       menuSelection.textContent = link.dataset.menuName;
+      if(link.dataset.panel === "about"){
+        serviceList.querySelectorAll("button[data-service]").forEach((button) => {
+          button.setAttribute("aria-pressed", "false");
+        });
+        renderPanel("about");
+      }
     });
 
     // Click handling
@@ -763,6 +747,7 @@
       if(!btn) return;
       setPressed(btn);
       renderPanel(btn.dataset.service);
+      menuSelection.textContent = "Services";
       if(window.matchMedia("(max-width: 900px)").matches){
         requestAnimationFrame(() => {
           servicePanel.scrollIntoView({ behavior: "smooth", block: "start" });
