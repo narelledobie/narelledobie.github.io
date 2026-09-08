@@ -243,6 +243,7 @@
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       overflow: hidden;
+      scroll-margin-top: 16px;
     }
     .card .hd{
       padding: 14px 14px 10px;
@@ -576,15 +577,15 @@
       <nav aria-label="Main navigation">
         <div class="nav-inner">
           <div class="nav-links">
-            <a href="#servicePanel" data-menu-name="About" data-panel="about">About</a>
+            <a href="#serviceList" data-menu-name="About" data-panel="about">About</a>
             <div class="nav-item">
-              <a href="#services" data-menu-name="Services" aria-haspopup="true">Services</a>
+              <a href="#serviceList" data-menu-name="Services" aria-haspopup="true">Services</a>
               <div class="submenu" aria-label="Services submenu">
-                <a href="#servicePanel" data-menu-name="Services" data-service="concept">Concept Design</a>
-                <a href="#servicePanel" data-menu-name="Services" data-service="documentation">Detailed Documentation</a>
-                <a href="#servicePanel" data-menu-name="Services" data-service="alterations">Renovations, Secondary Dwellings &amp; Extensions</a>
-                <a href="#servicePanel" data-menu-name="Services" data-service="interiors">Interior Layout &amp; Finishes</a>
-                <a href="#servicePanel" data-menu-name="Services" data-service="subcontracting">Subcontracting</a>
+                <a href="#serviceList" data-menu-name="Services" data-service="concept">Concept Design</a>
+                <a href="#serviceList" data-menu-name="Services" data-service="documentation">Detailed Documentation</a>
+                <a href="#serviceList" data-menu-name="Services" data-service="alterations">Renovations, Secondary Dwellings &amp; Extensions</a>
+                <a href="#serviceList" data-menu-name="Services" data-service="interiors">Interior Layout &amp; Finishes</a>
+                <a href="#serviceList" data-menu-name="Services" data-service="subcontracting">Subcontracting</a>
               </div>
             </div>
             <a href="projects.html" data-menu-name="Recent Projects">Recent Projects</a>
@@ -854,7 +855,7 @@
       setActiveHeading(btn.dataset.service === "about" ? "about" : "services");
       if(window.matchMedia("(max-width: 900px)").matches){
         requestAnimationFrame(() => {
-          servicePanel.scrollIntoView({ behavior: "smooth", block: "start" });
+          serviceList.scrollIntoView({ behavior: "auto", block: "start" });
         });
       }
     });
